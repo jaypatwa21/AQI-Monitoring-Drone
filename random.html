@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Monitoring System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- IMPORTANT: Replace YOUR_API_KEY with your actual Google Maps API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+   <script src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <div class="time-display" id="currentTime">--:--</div>
+            <div class="date-display" id="currentDate">Loading...</div>
+        </div>
+        <h1>Air Quality Monitoring System</h1>
+    </div>
+
+    <div class="dashboard">
+        <div class="map-container">
+            <h2>Real-Time Air Quality Map</h2>
+             <!-- The div for the map itself -->
+            <div id="map"></div>
+            <!-- Legend inside the map-container but outside the map div -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color dot-good"></div>
+                    <span>Good (0-50)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color dot-moderate"></div>
+                    <span>Moderate (51-100)</span>
+                </div>
+                 <div class="legend-item">
+                    <div class="legend-color dot-unhealthy-sensitive"></div>
+                    <span>Unhealthy Sensitive (101-150)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color dot-unhealthy"></div>
+                    <span>Unhealthy (151-200)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color dot-very-unhealthy"></div>
+                    <span>Very Unhealthy (201-300)</span>
+                </div>
+                 <div class="legend-item">
+                    <div class="legend-color dot-hazardous"></div>
+                    <span>Hazardous (301+)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="metrics-panel">
+            <div class="metric-card">
+                <h3>Air Quality Index</h3>
+                <svg class="progress-ring" id="aqiRing">
+                    <!-- Background circle -->
+                    <circle stroke="#3a3b50" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                    <!-- Foreground circle -->
+                    <circle class="progress-ring-circle" stroke="#4caf50" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                </svg>
+                <div class="metric-value" id="aqi">--</div>
+            </div>
+            <div class="metric-card">
+                <h3>Temperature</h3>
+                <svg class="progress-ring" id="tempRing">
+                     <circle stroke="#3a3b50" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                    <circle class="progress-ring-circle" stroke="#ff5722" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                </svg>
+                <div class="metric-value" id="temp">-- °C</div>
+            </div>
+            <div class="metric-card">
+                <h3>Humidity</h3>
+                <svg class="progress-ring" id="humidityRing">
+                     <circle stroke="#3a3b50" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                    <circle class="progress-ring-circle" stroke="#2196f3" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                </svg>
+                <div class="metric-value" id="humidity">-- %</div>
+            </div>
+            <div class="metric-card">
+                 <!-- Changed Title -->
+                <h3>PM2.5 Level</h3>
+                <svg class="progress-ring" id="dustRing">
+                     <circle stroke="#3a3b50" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                    <!-- Changed stroke color -->
+                    <circle class="progress-ring-circle" stroke="#ffc107" stroke-width="8" fill="transparent" r="34" cx="40" cy="40"/>
+                </svg>
+                 <!-- Changed ID and unit placeholder -->
+                <div class="metric-value" id="pm25">-- µg/m³</div>
+            </div>
+        </div>
+
+        <!-- Chart container moved outside the first row grid -->
+        <div class="chart-container">
+            <h2>24-Hour AQI Trend</h2>
+            <canvas id="sensorChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+            
+    </script>
+</body>
+</html>
